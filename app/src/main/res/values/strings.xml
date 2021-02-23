@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">EmaratProject</string>
+    <string name="start">شروع کنید</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_now">همین حالا ثبت نام کنید</string>
+    <string name="user_name_hint">نام و نام خانوادگی</string>
+    <string name="phone_number">شماره تلفن</string>
+    <string name="user_country_hint">کشور</string>
+    <string name="user_city_hint">شهر</string>
+    <string name="user_email_hint">ایمیل</string>
+    <string name="sign_in">ثبت نام</string>
+    <string name="select_country_city">شهر و کشور خود را انتخاب کنید</string>
+    <string name="select_country_hint">کشور مورد نظر خود را انتخاب کنید</string>
+    <string name="select_city">شهر مورد نظر خود را انتخاب کنید</string>
+    <string name="next_step">مرحله بعدی</string>
+    <string name="special_notice">آگهی های ویژه</string>
+    <string name="four_star_hotel">هتل 4 ستاره</string>
+    <string name="insert_notice_information">اطلاعات آگهی خود را وارد کنید</string>
+    <string name="specific_notice_title">عنوان آگهی خود را مشخص کنید</string>
+    <string name="take_photo">افزودن عکس</string>
+    <string name="store_name">نام فروشگاه</string>
+    <string name="store_location">مکان فروشگاه</string>
+    <string name="select_location">موقعیت مکانی</string>
+    <string name="category">دسته بندی</string>
+    <string name="submit_notice">ثبت آگهی</string>
+</resources>
