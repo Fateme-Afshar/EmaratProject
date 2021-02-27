@@ -1,4 +1,4 @@
-package com.emerat.emaratproject.view;
+package com.emerat.emaratproject.view.activity;
 
 import android.os.Bundle;
 

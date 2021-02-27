@@ -1,104 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/profile_text"
-        android:textColor="@color/light_green"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp"
-        />
+    <data>
 
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@drawable/img_profile"
-        app:civ_border_width="4dp"
-        app:civ_shadow_radius="10dp" />
+    </data>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my_profile_text"
-        android:layout_gravity="right"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:layout_marginTop="32dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_text"
+            android:textColor="@color/light_green"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my_country_txt"
-        android:layout_gravity="right"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:layout_marginTop="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        />
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/img_profile"
+            app:civ_border_width="4dp"
+            app:civ_shadow_radius="10dp" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_profile_text"
+            android:layout_gravity="right"
+            android:layout_marginEnd="52dp"
+            android:layout_marginRight="52dp"
+            android:layout_marginTop="32dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/my_city"
-        android:layout_gravity="right"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:layout_marginTop="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_country_txt"
+            android:layout_gravity="right"
+            android:layout_marginEnd="52dp"
+            android:layout_marginRight="52dp"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/principles"
-        android:layout_gravity="right"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        android:layout_marginTop="16dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_city"
+            android:layout_gravity="right"
+            android:layout_marginEnd="52dp"
+            android:layout_marginRight="52dp"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
 
-    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/exit_btn"
-        android:layout_gravity="right"
-        android:textColor="@color/black"
-        android:gravity="right"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
-        />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
 
-</LinearLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/principles"
+            android:layout_gravity="right"
+            android:layout_marginEnd="52dp"
+            android:layout_marginRight="52dp"
+            android:layout_marginTop="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="300dp"
+            android:layout_height="50dp" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exit_btn"
+            android:layout_gravity="right"
+            android:textColor="@color/black"
+            android:gravity="right"
+            android:layout_marginEnd="52dp"
+            android:layout_marginRight="52dp" />
+
+    </LinearLayout>
+</layout>

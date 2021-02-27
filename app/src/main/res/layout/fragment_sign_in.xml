@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,17 +9,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom|center">
+        tools:context=".view.fragment.LoginFragment"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/insert_notice_information"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:text="@string/login_now"
+            android:textSize="24sp"
             android:textColor="@color/light_green"
-            android:layout_marginBottom="32dp" />
+            android:layout_margin="16dp" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -28,36 +28,10 @@
             android:layout_marginBottom="16dp">
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/notice_title"
+                android:id="@+id/user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/specific_notice_title"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/take_photo"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.RedBorder"
-            android:layout_width="300dp"
-            android:layout_height="75dp"
-            android:layout_marginBottom="16dp"
-            app:icon="@drawable/ic_camera"
-            android:text="@string/take_photo"
-            android:textColor="@color/red"
-            app:iconGravity="textStart" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/store_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/store_name"
+                android:hint="@string/user_name_hint"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -69,39 +43,64 @@
             android:layout_marginBottom="16dp">
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/store_location"
+                android:id="@+id/phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/store_location"
+                android:hint="@string/phone_number"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
-            android:layout_height="75dp"
-            app:icon="@drawable/ic_location"
-            android:text="@string/select_location"
-            android:textColor="@color/light_gray"
-            app:iconTint="@color/red"
-            android:gravity="start|center"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/user_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_country_hint"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/user_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_city_hint"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/user_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/user_email_hint"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginBottom="24dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton.PinkBorder"
             android:layout_width="150dp"
-            android:layout_height="65dp"
-            android:textColor="#fbb2b2"
-            android:text="@string/category"
-            android:layout_marginBottom="72dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/submit_notice"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="60dp"
+            android:text="@string/sign_in"
+            android:textSize="24sp" />
 
     </LinearLayout>
 </layout>
