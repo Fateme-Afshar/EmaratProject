@@ -43,7 +43,6 @@
         android:layout_height="75dp"
         android:layout_gravity="bottom|center"
         android:textSize="25sp"
-        android:text="@string/start"
-        />
+        android:text="@string/start" />
 
 </LinearLayout>

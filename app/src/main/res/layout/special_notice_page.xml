@@ -59,5 +59,4 @@
         app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
         app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,4 +24,10 @@
     <string name="select_location">موقعیت مکانی</string>
     <string name="category">دسته بندی</string>
     <string name="submit_notice">ثبت آگهی</string>
+    <string name="profile_text">پروفایل کاربری</string>
+    <string name="my_profile_text">پروفایل من</string>
+    <string name="my_country_txt">کشور من</string>
+    <string name="my_city">شهر من</string>
+    <string name="principles">قوانین و مقررات</string>
+    <string name="exit_btn">خروج</string>
 </resources>
