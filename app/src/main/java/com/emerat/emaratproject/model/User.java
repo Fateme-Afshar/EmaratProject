@@ -11,6 +11,9 @@ public class User {
     private String mCountry;
     private String mToken;
 
+    public User() {
+    }
+
     public User(String name,
                 String username,
                 String email,

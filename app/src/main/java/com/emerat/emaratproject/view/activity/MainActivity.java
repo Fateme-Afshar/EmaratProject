@@ -10,4 +10,5 @@ public class MainActivity extends SingleFragmentActivity {
     protected Fragment getFragment() {
         return SignInFragment.newInstance();
     }
+
 }
