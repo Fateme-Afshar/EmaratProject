@@ -18,14 +18,15 @@ public class User {
     @SerializedName("password")
     private String mPassword;
     @SerializedName("country")
-    private String mCountry;
+    private String mCountryId;
 
-    private String mToken;
+    @SerializedName("city")
+    private String mCityId;
 
     public User() {
     }
 
-    public User(String name, String username, String email, String phone, String telephone, String address, String password, String country, String token) {
+    public User(String name, String username, String email, String phone, String telephone, String address, String password, String countryId, String token) {
         mName = name;
         mUsername = username;
         mEmail = email;
@@ -33,8 +34,7 @@ public class User {
         mTelephone = telephone;
         mAddress = address;
         mPassword = password;
-        mCountry = country;
-        mToken = token;
+        mCountryId = countryId;
     }
 
     public String getName() {
@@ -93,19 +93,19 @@ public class User {
         mPassword = password;
     }
 
-    public String getCountry() {
-        return mCountry;
+    public String getCountryId() {
+        return mCountryId;
     }
 
-    public void setCountry(String country) {
-        mCountry = country;
+    public void setCountryId(String countryId) {
+        mCountryId = countryId;
     }
 
-    public String getToken() {
-        return mToken;
+    public String getCityId() {
+        return mCityId;
     }
 
-    public void setToken(String token) {
-        mToken = token;
+    public void setCityId(String cityId) {
+        mCityId = cityId;
     }
 }

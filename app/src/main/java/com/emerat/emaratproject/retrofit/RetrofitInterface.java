@@ -14,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.HEAD;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -21,6 +22,9 @@ import retrofit2.http.Query;
 public interface RetrofitInterface {
     @POST("user")
     Observable<PostResponse> postUser(@Body User user);
+
+    @PATCH("user")
+    Observable<PostResponse> editUser(@Body User user);
 
     @GET("country")
     Observable<List<Country>> getCountryList();

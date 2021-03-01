@@ -11,18 +11,17 @@ import com.emerat.emaratproject.model.PostResponse;
 import com.emerat.emaratproject.model.User;
 import com.emerat.emaratproject.retrofit.RetrofitInterface;
 import com.emerat.emaratproject.utils.ProgramUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+
 
 public class UserRepository {
     private static UserRepository sInstance;
     private final RetrofitInterface mRetrofitInterface;
     private MutableLiveData<Boolean> mIsPost=new MutableLiveData<>();
+
+    private PostResponse mPostResponse=new PostResponse();
 
     private UserRepository(RetrofitInterface retrofitInterface) {
         mRetrofitInterface= retrofitInterface;
@@ -43,8 +42,13 @@ public class UserRepository {
                 subscribe(this::setResultPostUser, e-> Log.e(ProgramUtils.TAG,e.getMessage()));
     }
 
-    public void setResultPostUser(PostResponse isPost){
-        mIsPost.setValue(!isPost.equals(null));
+    public void editUser(User user){
+
+    }
+
+    public void setResultPostUser(PostResponse postResponse){
+        mIsPost.setValue(!postResponse.equals(null));
+        Log.d(ProgramUtils.TAG,postResponse.getEmail());
     }
 
     public LiveData<Boolean> resultPost(){

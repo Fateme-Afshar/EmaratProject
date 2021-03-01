@@ -5,9 +5,7 @@ import android.text.Editable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.emerat.emaratproject.di.ApplicationContainer;
 import com.emerat.emaratproject.model.User;
-import com.emerat.emaratproject.repository.CountryRepository;
 import com.emerat.emaratproject.repository.UserRepository;
 
 public class SignInViewModel extends ViewModel{
@@ -38,11 +36,11 @@ public class SignInViewModel extends ViewModel{
     }
 
     public void setCountryCode(String countryCode){
-        mUser.setCountry(countryCode);
+        mUser.setCountryId(countryCode);
     }
 
-    public void setCity(String city){
-        mUser.setCountry(city);
+    public void setCityId(String cityId){
+        mUser.setCityId(cityId);
     }
 
     public void afterTextChangeAddress(Editable editable){
@@ -57,12 +55,8 @@ public class SignInViewModel extends ViewModel{
         mUser.setPassword(editable.toString());
     }
 
-    private void postUser(){
-        mRepository.postUser(mUser);
-    }
-
     public void onSignBtnClickListener(){
-        postUser();
+        mRepository.postUser(mUser);
     }
 
     public LiveData<Boolean> getIsPost() {

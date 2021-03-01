@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.emerat.emaratproject.EmaratProjectApplication;
 import com.emerat.emaratproject.R;
@@ -110,6 +109,7 @@ public class SignInFragment extends Fragment{
                     if (country.getName().equals(name))
                         countyId=country.getId();
                 }
+                mViewModel.setCountryCode(countyId);
                 mNetworkViewModel.requestServerReceiveCities(countyId);
             }
 
@@ -133,9 +133,15 @@ public class SignInFragment extends Fragment{
         mBinding.spCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String name=adapterView.getItemAtPosition(position).toString();
+                String cityName=adapterView.getItemAtPosition(position).toString();
 
-                mViewModel.setCity(name);
+                String cityId="";
+                for (City city :
+                        new ApplicationContainer().getCityList()) {
+                    if (city.getTitle().equals(cityName))
+                        cityId=city.getId();
+                }
+                mViewModel.setCityId(cityId);
             }
 
             @Override

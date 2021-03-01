@@ -2,6 +2,7 @@ package com.emerat.emaratproject.view.activity;
 
 import androidx.fragment.app.Fragment;
 
+import com.emerat.emaratproject.view.fragment.ProfileFragment;
 import com.emerat.emaratproject.view.fragment.SignInFragment;
 
 public class MainActivity extends SingleFragmentActivity {
@@ -10,5 +11,4 @@ public class MainActivity extends SingleFragmentActivity {
     protected Fragment getFragment() {
         return SignInFragment.newInstance();
     }
-
 }
