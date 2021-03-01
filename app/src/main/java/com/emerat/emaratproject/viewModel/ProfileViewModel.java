@@ -10,6 +10,4 @@ public class ProfileViewModel extends ViewModel {
     public ProfileViewModel(UserRepository userRepository) {
         mUserRepository = userRepository;
     }
-
-
 }

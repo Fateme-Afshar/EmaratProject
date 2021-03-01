@@ -20,6 +20,7 @@ import com.emerat.emaratproject.databinding.FragmentSignInBinding;
 import com.emerat.emaratproject.di.ApplicationContainer;
 import com.emerat.emaratproject.model.City;
 import com.emerat.emaratproject.model.Country;
+import com.emerat.emaratproject.sharePref.EmaratProjectSharePref;
 import com.emerat.emaratproject.utils.ProgramUtils;
 import com.emerat.emaratproject.viewModel.NetworkViewModel;
 import com.emerat.emaratproject.viewModel.SignInViewModel;
@@ -70,7 +71,7 @@ public class SignInFragment extends Fragment{
             @Override
             public void onChanged(Boolean result) {
                 if (result)
-                    Log.d(ProgramUtils.TAG,"User post successfully");
+                    Log.d(ProgramUtils.TAG, "User post successfully");
                 else
                     Log.d(ProgramUtils.TAG,"cannot user post");
             }

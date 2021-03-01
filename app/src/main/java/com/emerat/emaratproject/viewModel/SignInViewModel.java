@@ -59,6 +59,10 @@ public class SignInViewModel extends ViewModel{
         mRepository.postUser(mUser);
     }
 
+    public User getUser() {
+        return mUser;
+    }
+
     public LiveData<Boolean> getIsPost() {
         return mIsPost;
     }
