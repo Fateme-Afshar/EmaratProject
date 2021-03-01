@@ -34,4 +34,6 @@
     <string name="telephone_number_hint">شماره تلفن ثابت</string>
     <string name="user_name_hint">نام کاربری</string>
     <string name="address_hint">آدرس</string>
+
+    <string name="country_selected">کشور محل زندگی خود را انتخاب کنید</string>
 </resources>

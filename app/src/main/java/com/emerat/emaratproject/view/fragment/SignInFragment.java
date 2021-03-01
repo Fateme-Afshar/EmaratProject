@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,14 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.emerat.emaratproject.EmaratProjectApplication;
 import com.emerat.emaratproject.R;
+
 import com.emerat.emaratproject.databinding.FragmentSignInBinding;
 import com.emerat.emaratproject.di.ApplicationContainer;
+import com.emerat.emaratproject.model.City;
 import com.emerat.emaratproject.model.Country;
-import com.emerat.emaratproject.model.User;
 import com.emerat.emaratproject.utils.ProgramUtils;
 import com.emerat.emaratproject.viewModel.NetworkViewModel;
 import com.emerat.emaratproject.viewModel.SignInViewModel;
@@ -28,7 +28,7 @@ import com.emerat.emaratproject.viewModel.SignInViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SignInFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class SignInFragment extends Fragment{
     private FragmentSignInBinding mBinding;
     private SignInViewModel mViewModel;
     private NetworkViewModel mNetworkViewModel;
@@ -57,6 +57,13 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
             @Override
             public void onChanged(Boolean aBoolean) {
                 setupCountrySpinner();
+            }
+        });
+
+        mNetworkViewModel.getIsReceiveCity().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                setupCitySpinner();
             }
         });
 
@@ -91,24 +98,51 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
 
         ArrayAdapter<String> userArrayAdapter= new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, countryNames);
         mBinding.spCountry.setAdapter(userArrayAdapter);
+
+        mBinding.spCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                String name=adapterView.getItemAtPosition(position).toString();
+
+                String countyId="";
+                for (Country country :
+                        new ApplicationContainer().getCountyList()) {
+                    if (country.getName().equals(name))
+                        countyId=country.getId();
+                }
+                mNetworkViewModel.requestServerReceiveCities(countyId);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-        String name=parent.getItemAtPosition(position).toString();
-
-        String countyId;
-        for (Country country :
-                new ApplicationContainer().getCountyList()) {
-           if (country.getName().equals(name))
-               countyId=country.getId();
+    private void setupCitySpinner() {
+        List<String> cityNames=new ArrayList<>();
+        for (City city :
+                new ApplicationContainer().getCityList()) {
+            cityNames.add(city.getTitle());
         }
-        //TODO: send country id to view model.
 
+        ArrayAdapter<String> userArrayAdapter= new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, cityNames);
+        mBinding.spCity.setAdapter(userArrayAdapter);
+
+        mBinding.spCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                String name=adapterView.getItemAtPosition(position).toString();
+
+                mViewModel.setCity(name);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 }

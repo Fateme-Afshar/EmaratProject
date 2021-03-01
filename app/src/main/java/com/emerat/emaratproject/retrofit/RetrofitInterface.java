@@ -1,5 +1,6 @@
 package com.emerat.emaratproject.retrofit;
 
+import com.emerat.emaratproject.model.City;
 import com.emerat.emaratproject.model.Country;
 import com.emerat.emaratproject.model.PostResponse;
 import com.emerat.emaratproject.model.User;
@@ -14,6 +15,8 @@ import retrofit2.http.HEAD;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface RetrofitInterface {
     @POST("user")
@@ -22,5 +25,6 @@ public interface RetrofitInterface {
     @GET("country")
     Observable<List<Country>> getCountryList();
 
-    Observable<List<>>
+    @GET("citys/{countryCode}")
+    Observable<List<City>> getCityList(@Path("countryCode") String countryCode);
 }
