@@ -1,28 +1,31 @@
 package com.emerat.emaratproject.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class User {
+    @SerializedName("name")
     private String mName;
+    @SerializedName("userName")
     private String mUsername;
+    @SerializedName("email")
     private String mEmail;
-    private short mPhone;
-    private short mTelephone;
+    @SerializedName("phone")
+    private String mPhone;
+    @SerializedName("telephone")
+    private String mTelephone;
+    @SerializedName("address")
     private String mAddress;
+    @SerializedName("password")
     private String mPassword;
+    @SerializedName("country")
     private String mCountry;
+
     private String mToken;
 
     public User() {
     }
 
-    public User(String name,
-                String username,
-                String email,
-                short phone,
-                short telephone,
-                String address,
-                String password,
-                String country,
-                String token) {
+    public User(String name, String username, String email, String phone, String telephone, String address, String password, String country, String token) {
         mName = name;
         mUsername = username;
         mEmail = email;
@@ -58,19 +61,19 @@ public class User {
         mEmail = email;
     }
 
-    public short getPhone() {
+    public String getPhone() {
         return mPhone;
     }
 
-    public void setPhone(short phone) {
+    public void setPhone(String phone) {
         mPhone = phone;
     }
 
-    public short getTelephone() {
+    public String getTelephone() {
         return mTelephone;
     }
 
-    public void setTelephone(short telephone) {
+    public void setTelephone(String telephone) {
         mTelephone = telephone;
     }
 
