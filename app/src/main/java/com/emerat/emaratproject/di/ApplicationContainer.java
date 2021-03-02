@@ -1,6 +1,9 @@
 package com.emerat.emaratproject.di;
 
+import android.content.Context;
+
 import com.emerat.emaratproject.factory.viewModelFactory.NetworkViewModelFactory;
+import com.emerat.emaratproject.factory.viewModelFactory.ProfileViewModelFactory;
 import com.emerat.emaratproject.factory.viewModelFactory.SignInViewModelFactory;
 import com.emerat.emaratproject.model.City;
 import com.emerat.emaratproject.model.Country;
@@ -34,12 +37,19 @@ public class ApplicationContainer {
     private NetworkViewModelFactory mNetworkViewModelFactory=
             new NetworkViewModelFactory(mCountryRepository,mCityRepository);
 
+    private ProfileViewModelFactory mProfileViewModelFactory=
+            new ProfileViewModelFactory(mUserRepository);
+
     public SignInViewModelFactory getSignInViewModelFactory() {
         return mSignInViewModelFactory;
     }
 
     public NetworkViewModelFactory getNetworkViewModelFactory() {
         return mNetworkViewModelFactory;
+    }
+
+    public ProfileViewModelFactory getProfileViewModelFactory(){
+        return mProfileViewModelFactory;
     }
 
     private <T>  RetrofitInterface  createRetrofitInterface(T t){
@@ -57,6 +67,10 @@ public class ApplicationContainer {
 
     public List<Country> getCountyList(){
         return mCountryRepository.getCountryList();
+    }
+
+    public UserRepository getUserRepository() {
+        return mUserRepository;
     }
 
     public List<City> getCityList(){

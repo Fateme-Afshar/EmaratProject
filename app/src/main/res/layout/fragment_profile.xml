@@ -3,108 +3,180 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.emerat.emaratproject.viewModel.ProfileViewModel" />
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/profile_text"
-            android:textColor="@color/light_green"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_text"
+                android:textColor="@color/light_green"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp" />
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/img_profile"
-            app:civ_border_width="4dp"
-            app:civ_shadow_radius="10dp" />
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/img_profile"
+                app:civ_border_width="4dp"
+                app:civ_shadow_radius="10dp" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/my_profile_text"
-            android:layout_gravity="right"
-            android:layout_marginEnd="52dp"
-            android:layout_marginRight="52dp"
-            android:layout_marginTop="32dp"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_hint"
+                android:layout_gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="32dp"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="300dp"
-            android:layout_height="50dp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_name"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="@{viewModel.user.username}"
+                />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/my_country_txt"
-            android:layout_gravity="right"
-            android:layout_marginEnd="52dp"
-            android:layout_marginRight="52dp"
-            android:layout_marginTop="16dp"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name_hint"
+                android:layout_gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="32dp"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="300dp"
-            android:layout_height="50dp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_user_name"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="@{viewModel.user.name}"
+                />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/my_city"
-            android:layout_gravity="right"
-            android:layout_marginEnd="52dp"
-            android:layout_marginRight="52dp"
-            android:layout_marginTop="16dp"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_country_txt"
+                android:layout_gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="300dp"
-            android:layout_height="50dp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_country"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="@{viewModel.user.countryId}"
+                />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/principles"
-            android:layout_gravity="right"
-            android:layout_marginEnd="52dp"
-            android:layout_marginRight="52dp"
-            android:layout_marginTop="16dp"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_city"
+                android:layout_gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="300dp"
-            android:layout_height="50dp" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_city"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="@{viewModel.user.cityId}"
+                />
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/exit_btn"
-            android:layout_gravity="right"
-            android:textColor="@color/black"
-            android:gravity="right"
-            android:layout_marginEnd="52dp"
-            android:layout_marginRight="52dp" />
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_email_hint"
+                android:layout_gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_edit"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit_information" />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ed_email"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="@{viewModel.user.email}"
+                />
 
-    </LinearLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number"
+                android:layout_gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ed_phone"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="@{viewModel.user.email}"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/telephone_number_hint"
+                android:layout_gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_telephone"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="@{viewModel.user.email}"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/exit_btn"
+                android:layout_gravity="right"
+                android:textColor="@color/black"
+                android:gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_information" />
+
+        </LinearLayout>
+    </ScrollView>
 </layout>

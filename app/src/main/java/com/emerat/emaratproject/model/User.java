@@ -23,6 +23,12 @@ public class User {
     @SerializedName("city")
     private String mCityId;
 
+    private Country mCountry;
+
+    private City mCity;
+
+    private String mToken;
+
     public User() {
     }
 
@@ -107,5 +113,21 @@ public class User {
 
     public void setCityId(String cityId) {
         mCityId = cityId;
+    }
+
+    public Country getCountry() {
+        return mCountry;
+    }
+
+    public void setCountry(Country country) {
+        mCountry = country;
+    }
+
+    public City getCity() {
+        return mCity;
+    }
+
+    public void setCity(City city) {
+        mCity = city;
     }
 }

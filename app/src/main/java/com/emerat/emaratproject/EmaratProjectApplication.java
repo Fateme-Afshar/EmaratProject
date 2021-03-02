@@ -5,9 +5,9 @@ import android.app.Application;
 import com.emerat.emaratproject.di.ApplicationContainer;
 
 public class EmaratProjectApplication extends Application {
-    private static ApplicationContainer mApplicationContainer=new ApplicationContainer();
+    private final ApplicationContainer mApplicationContainer=new ApplicationContainer();
 
-    public static ApplicationContainer getApplicationContainer() {
+    public  ApplicationContainer getApplicationContainer() {
         return mApplicationContainer;
     }
 }

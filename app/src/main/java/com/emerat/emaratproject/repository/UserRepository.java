@@ -1,17 +1,18 @@
 package com.emerat.emaratproject.repository;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.emerat.emaratproject.model.Country;
 import com.emerat.emaratproject.model.PostResponse;
 import com.emerat.emaratproject.model.User;
 import com.emerat.emaratproject.retrofit.RetrofitInterface;
 import com.emerat.emaratproject.sharePref.EmaratProjectSharePref;
 import com.emerat.emaratproject.utils.ProgramUtils;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
