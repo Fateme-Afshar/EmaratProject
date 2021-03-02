@@ -5,6 +5,7 @@ import android.text.Editable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.emerat.emaratproject.model.PostResponse;
 import com.emerat.emaratproject.model.User;
 import com.emerat.emaratproject.repository.UserRepository;
 
@@ -12,7 +13,7 @@ public class SignInViewModel extends ViewModel{
     private UserRepository mRepository;
     private User mUser=new User();
 
-    private LiveData<Boolean> mIsPost;
+    private LiveData<PostResponse> mIsPost;
 
     public SignInViewModel(UserRepository repository) {
         mRepository = repository;
@@ -63,7 +64,7 @@ public class SignInViewModel extends ViewModel{
         return mUser;
     }
 
-    public LiveData<Boolean> getIsPost() {
+    public LiveData<PostResponse> getIsPost() {
         return mIsPost;
     }
 }

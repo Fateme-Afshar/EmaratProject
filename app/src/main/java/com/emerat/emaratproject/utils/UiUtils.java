@@ -4,17 +4,12 @@ import android.content.Context;
 import android.widget.Toast;
 
 public class UiUtils {
-    private Context mContext;
 
-    public UiUtils(Context context) {
-        mContext=context.getApplicationContext();
+    public static void createToast(Context context,String msg){
+        Toast.makeText(context,msg,Toast.LENGTH_LONG).show();
     }
 
-    public  void createToast(String msg){
-        Toast.makeText(mContext,msg,Toast.LENGTH_LONG).show();
-    }
-
-    public  void createToast(int msgRes){
-        Toast.makeText(mContext,msgRes,Toast.LENGTH_LONG).show();
+    public static void createToast(Context context,int msgRes){
+        Toast.makeText(context,msgRes,Toast.LENGTH_LONG).show();
     }
 }

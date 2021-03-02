@@ -20,6 +20,7 @@ import com.emerat.emaratproject.databinding.FragmentSignInBinding;
 import com.emerat.emaratproject.di.ApplicationContainer;
 import com.emerat.emaratproject.model.City;
 import com.emerat.emaratproject.model.Country;
+import com.emerat.emaratproject.model.PostResponse;
 import com.emerat.emaratproject.sharePref.EmaratProjectSharePref;
 import com.emerat.emaratproject.utils.ProgramUtils;
 import com.emerat.emaratproject.viewModel.NetworkViewModel;
@@ -67,11 +68,14 @@ public class SignInFragment extends Fragment{
             }
         });
 
-        mViewModel.getIsPost().observe(this, new Observer<Boolean>() {
+        mViewModel.getIsPost().observe(this, new Observer<PostResponse>() {
             @Override
-            public void onChanged(Boolean result) {
-                if (result)
+            public void onChanged(PostResponse postResponse) {
+                if (!postResponse.equals(null)) {
                     Log.d(ProgramUtils.TAG, "User post successfully");
+                    mViewModel.getUser().setToken("Bearer "+postResponse.getToken());
+                    EmaratProjectSharePref.saveUser(getContext(),mViewModel.getUser());
+                }
                 else
                     Log.d(ProgramUtils.TAG,"cannot user post");
             }

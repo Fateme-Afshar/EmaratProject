@@ -32,6 +32,15 @@ public class User {
     public User() {
     }
 
+    public User(String name, String phone, String telephone, String address, String countryId, String cityId) {
+        mName = name;
+        mPhone = phone;
+        mTelephone = telephone;
+        mAddress = address;
+        mCountryId = countryId;
+        mCityId = cityId;
+    }
+
     public User(String name, String username, String email, String phone, String telephone, String address, String password, String countryId, String token) {
         mName = name;
         mUsername = username;
@@ -129,5 +138,13 @@ public class User {
 
     public void setCity(City city) {
         mCity = city;
+    }
+
+    public String getToken() {
+        return mToken;
+    }
+
+    public void setToken(String token) {
+        mToken = token;
     }
 }

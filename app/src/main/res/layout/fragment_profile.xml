@@ -48,7 +48,8 @@
                 android:id="@+id/ed_name"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:text="@{viewModel.user.username}"
+                android:text="@{viewModel.user.name}"
+                android:afterTextChanged="@{viewModel::afterTextChangeName}"
                 />
 
             <com.google.android.material.textview.MaterialTextView
@@ -66,7 +67,8 @@
                 android:id="@+id/ed_user_name"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:text="@{viewModel.user.name}"
+                android:afterTextChanged="@{viewModel::afterTextChangeUsername}"
+                android:text="@{viewModel.user.username}"
                 />
 
             <com.google.android.material.textview.MaterialTextView
@@ -120,6 +122,7 @@
                 android:id="@+id/ed_email"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
+                android:afterTextChanged="@{viewModel::afterTextChangeEmail}"
                 android:text="@{viewModel.user.email}"
                 />
 
@@ -138,7 +141,7 @@
                 android:id="@+id/ed_phone"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:text="@{viewModel.user.email}"
+                android:text="@{viewModel.user.phone}"
                 />
 
             <com.google.android.material.textview.MaterialTextView
@@ -156,7 +159,27 @@
                 android:id="@+id/ed_telephone"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
-                android:text="@{viewModel.user.email}"
+                android:text="@{viewModel.user.telephone}"
+                android:afterTextChanged="@{viewModel::afterTextChangeTelephone}"
+                />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address_hint"
+                android:layout_gravity="right"
+                android:layout_marginEnd="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_address"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="@{viewModel.user.address}"
+                android:afterTextChanged="@{viewModel::afterTextChangeAddress}"
                 />
 
             <com.google.android.material.button.MaterialButton
@@ -175,7 +198,9 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/edit_information" />
+                android:text="@string/edit_information"
+                android:onClick="@{()->viewModel.onEditBtnClickListener()}"
+                />
 
         </LinearLayout>
     </ScrollView>

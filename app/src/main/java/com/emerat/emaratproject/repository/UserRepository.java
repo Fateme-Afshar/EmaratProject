@@ -21,7 +21,8 @@ import io.reactivex.schedulers.Schedulers;
 public class UserRepository {
     private static UserRepository sInstance;
     private final RetrofitInterface mRetrofitInterface;
-    private MutableLiveData<Boolean> mIsPost=new MutableLiveData<>();
+    private MutableLiveData<PostResponse> mIsPost=new MutableLiveData<>();
+    private MutableLiveData<Boolean> mIsEdit=new MutableLiveData<>();
 
     private PostResponse mPostResponse=new PostResponse();
 
@@ -45,15 +46,27 @@ public class UserRepository {
     }
 
     public void editUser(User user){
+        Observable<PostResponse> observable=mRetrofitInterface.editUser(user);
 
+        observable.subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe(this::setResultPostUser, e-> Log.e(ProgramUtils.TAG,e.getMessage()));
+    }
+
+    public void setResultEditUser(PostResponse postResponse){
+        mIsEdit.setValue(!postResponse.equals(null));
     }
 
     public void setResultPostUser(PostResponse postResponse){
-        mIsPost.setValue(!postResponse.equals(null));
-        Log.d(ProgramUtils.TAG,postResponse.getEmail());
+        mIsPost.setValue(postResponse);
+        Log.d(ProgramUtils.TAG,postResponse.getToken());
     }
 
-    public LiveData<Boolean> resultPost(){
+    public LiveData<Boolean> resultEdit() {
+        return mIsEdit;
+    }
+
+    public LiveData<PostResponse> resultPost(){
        return mIsPost;
     }
 }

@@ -9,6 +9,6 @@ public class MainActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment getFragment() {
-        return ProfileFragment.newInstance();
+        return SignInFragment.newInstance();
     }
 }
