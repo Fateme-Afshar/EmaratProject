@@ -24,13 +24,15 @@ public interface RetrofitInterface {
     @POST("user")
     Observable<PostResponse> postUser(@Body User user);
 
-    @Headers("Authorization")
     @PUT("user")
-    Observable<PostResponse> editUser(@Body User user);
+    Call<PostResponse> editUser(@Header("Authorization") String token,@Body User user);
 
     @GET("country")
     Observable<List<Country>> getCountryList();
 
     @GET("citys/{countryCode}")
     Observable<List<City>> getCityList(@Path("countryCode") String countryCode);
+
+    @GET("auth/user")
+    Call<PostResponse> loginUser(@Header("Authorization") String token);
 }

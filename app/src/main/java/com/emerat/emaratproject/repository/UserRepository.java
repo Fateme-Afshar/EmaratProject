@@ -16,6 +16,9 @@ import com.emerat.emaratproject.utils.ProgramUtils;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class UserRepository {
@@ -45,12 +48,43 @@ public class UserRepository {
                 subscribe(this::setResultPostUser, e-> Log.e(ProgramUtils.TAG,e.getMessage()));
     }
 
-    public void editUser(User user){
-        Observable<PostResponse> observable=mRetrofitInterface.editUser(user);
+    public void loginUser(String token,User user){
+        Call<PostResponse> observable=mRetrofitInterface.loginUser(token);
 
-        observable.subscribeOn(Schedulers.io()).
+        observable.enqueue(new Callback<PostResponse>() {
+            @Override
+            public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
+                setResultEditUser(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse> call, Throwable t) {
+
+            }
+        });
+        /*observable.subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
-                subscribe(this::setResultPostUser, e-> Log.e(ProgramUtils.TAG,e.getMessage()));
+                subscribe(this::setResultPostUser, e-> Log.e(ProgramUtils.TAG,e.getMessage()));*/
+    }
+
+    public void editUser(String token,User user){
+        Call<PostResponse> observable=mRetrofitInterface.editUser(token,user);
+
+        observable.enqueue(new Callback<PostResponse>() {
+            @Override
+            public void onResponse(Call<PostResponse> call, Response<PostResponse> response) {
+                setResultEditUser(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<PostResponse> call, Throwable t) {
+                Log.e(ProgramUtils.TAG,t.getMessage());
+            }
+        });
+
+       /* observable.subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).
+                subscribe(this::setResultPostUser, e-> Log.e(ProgramUtils.TAG,e.getMessage()));*/
     }
 
     public void setResultEditUser(PostResponse postResponse){

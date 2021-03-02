@@ -41,15 +41,15 @@ public class User {
         mCityId = cityId;
     }
 
-    public User(String name, String username, String email, String phone, String telephone, String address, String password, String countryId, String token) {
+    public User(String name, String username, String email, String phone, String telephone, String address, String countryId, String cityId) {
         mName = name;
         mUsername = username;
         mEmail = email;
         mPhone = phone;
         mTelephone = telephone;
         mAddress = address;
-        mPassword = password;
         mCountryId = countryId;
+        mCityId=cityId;
     }
 
     public String getName() {
