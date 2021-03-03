@@ -5,8 +5,7 @@ import com.emerat.emaratproject.factory.viewModelFactory.ProfileViewModelFactory
 import com.emerat.emaratproject.factory.viewModelFactory.SignInViewModelFactory;
 import com.emerat.emaratproject.model.City;
 import com.emerat.emaratproject.model.Country;
-import com.emerat.emaratproject.model.anything.DataItem;
-import com.emerat.emaratproject.model.anything.ResponseProduct;
+import com.emerat.emaratproject.model.data.DataItem;
 import com.emerat.emaratproject.repository.CityRepository;
 import com.emerat.emaratproject.repository.CountryRepository;
 import com.emerat.emaratproject.repository.DataRepository;
@@ -78,7 +77,7 @@ public class ApplicationContainer {
         return mCityRepository.getCityList();
     }
 
-    public List<DataItem> getProductList(){
+    public List<DataItem> getDataList(){
         return mDataRepository.getDataItems();
     }
 

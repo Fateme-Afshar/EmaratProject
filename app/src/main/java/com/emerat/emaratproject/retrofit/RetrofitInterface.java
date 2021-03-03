@@ -3,9 +3,8 @@ package com.emerat.emaratproject.retrofit;
 import com.emerat.emaratproject.model.City;
 import com.emerat.emaratproject.model.Country;
 import com.emerat.emaratproject.model.PostResponse;
-import com.emerat.emaratproject.model.Product;
 import com.emerat.emaratproject.model.User;
-import com.emerat.emaratproject.model.anything.ResponseProduct;
+import com.emerat.emaratproject.model.data.ResponseProduct;
 
 import java.util.List;
 import java.util.Map;
@@ -14,14 +13,10 @@ import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.HEAD;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface RetrofitInterface {

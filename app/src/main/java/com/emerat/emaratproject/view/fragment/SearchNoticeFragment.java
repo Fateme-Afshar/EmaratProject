@@ -1,21 +1,25 @@
 package com.emerat.emaratproject.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 
 import com.emerat.emaratproject.EmaratProjectApplication;
 import com.emerat.emaratproject.R;
 import com.emerat.emaratproject.databinding.FragmentSearchNoticeBinding;
 import com.emerat.emaratproject.di.ApplicationContainer;
+import com.emerat.emaratproject.utils.ProgramUtils;
 import com.emerat.emaratproject.utils.SpinnerUtils;
 import com.emerat.emaratproject.viewModel.NetworkViewModel;
 
@@ -23,8 +27,10 @@ public class SearchNoticeFragment extends Fragment {
     private FragmentSearchNoticeBinding mBinding;
     private NetworkViewModel mNetworkViewModel;
     private ApplicationContainer mContainer;
-    private String mCountryId="";
-    private String mCityId="";
+    private String mCountryId = "";
+    private String mCityId = "";
+
+    private SearchNoticeFragmentCallback mCallback;
 
     public SearchNoticeFragment() {
         // Required empty public constructor
@@ -38,11 +44,22 @@ public class SearchNoticeFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        if (context instanceof SearchNoticeFragmentCallback)
+            mCallback = (SearchNoticeFragmentCallback) context;
+        else
+            throw new ClassCastException("Must implementation SearchNoticeFragmentCallback interface");
+
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContainer=((EmaratProjectApplication) getActivity().getApplication()).getApplicationContainer();
+        mContainer = ((EmaratProjectApplication) getActivity().getApplication()).getApplicationContainer();
 
-        mNetworkViewModel=mContainer.getNetworkViewModelFactory().create();
+        mNetworkViewModel = mContainer.getNetworkViewModelFactory().create();
 
         mNetworkViewModel.requestServerReceiveCounties();
 
@@ -57,6 +74,20 @@ public class SearchNoticeFragment extends Fragment {
             @Override
             public void onChanged(Boolean aBoolean) {
                 setupCitySpinner();
+            }
+        });
+
+        mNetworkViewModel.getIsReceiveData().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
+                    if (mContainer.getDataList().size() == 0)
+                        Toast.makeText(getContext(), "Nothing to show", Toast.LENGTH_LONG).show();
+                    else {
+                        mCallback.onDataReceive();
+                        Log.d(ProgramUtils.TAG,"Receive data");
+                    }
+                }
             }
         });
     }
@@ -122,5 +153,9 @@ public class SearchNoticeFragment extends Fragment {
 
     public void setCityId(String cityId) {
         mCityId = cityId;
+    }
+
+    public interface SearchNoticeFragmentCallback {
+        void onDataReceive();
     }
 }

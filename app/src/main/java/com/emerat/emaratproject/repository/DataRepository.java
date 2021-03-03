@@ -5,8 +5,8 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.emerat.emaratproject.model.anything.DataItem;
-import com.emerat.emaratproject.model.anything.ResponseProduct;
+import com.emerat.emaratproject.model.data.DataItem;
+import com.emerat.emaratproject.model.data.ResponseProduct;
 import com.emerat.emaratproject.retrofit.RetrofitInterface;
 import com.emerat.emaratproject.utils.NetworkUtils;
 import com.emerat.emaratproject.utils.ProgramUtils;
@@ -17,9 +17,6 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DataRepository {
     private static DataRepository sInstance;

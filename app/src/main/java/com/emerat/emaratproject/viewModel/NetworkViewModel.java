@@ -45,7 +45,7 @@ public class NetworkViewModel extends ViewModel {
         return mIsReceiveCity;
     }
 
-    public LiveData<Boolean> getIsReceiveProducts() {
+    public LiveData<Boolean> getIsReceiveData() {
         return mIsReceiveProducts;
     }
 }

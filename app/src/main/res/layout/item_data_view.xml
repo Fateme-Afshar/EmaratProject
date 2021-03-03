@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="dataItem"
+            type="com.emerat.emaratproject.model.data.DataItem" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tv_data_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_hotel" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_data_title"
+            android:layout_alignEnd="@+id/tv_data_title"
+            android:layout_alignRight="@+id/tv_data_title"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:textAlignment="center"
+            tools:text="@string/four_star_hotel"
+            android:text="@{dataItem.title}"
+            android:gravity="center_horizontal"
+            />
+
+
+    </RelativeLayout>
+</layout>

@@ -1,4 +1,4 @@
-package com.emerat.emaratproject.model.anything;
+package com.emerat.emaratproject.model.data;
 
 import com.google.gson.annotations.SerializedName;
 
