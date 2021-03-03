@@ -1,22 +1,25 @@
 package com.emerat.emaratproject.di;
 
-import android.content.Context;
-
 import com.emerat.emaratproject.factory.viewModelFactory.NetworkViewModelFactory;
 import com.emerat.emaratproject.factory.viewModelFactory.ProfileViewModelFactory;
 import com.emerat.emaratproject.factory.viewModelFactory.SignInViewModelFactory;
 import com.emerat.emaratproject.model.City;
 import com.emerat.emaratproject.model.Country;
+import com.emerat.emaratproject.model.anything.DataItem;
+import com.emerat.emaratproject.model.anything.ResponseProduct;
 import com.emerat.emaratproject.repository.CityRepository;
 import com.emerat.emaratproject.repository.CountryRepository;
+import com.emerat.emaratproject.repository.DataRepository;
 import com.emerat.emaratproject.repository.UserRepository;
 import com.emerat.emaratproject.retrofit.RetrofitInstance;
 import com.emerat.emaratproject.retrofit.RetrofitInterface;
 import com.emerat.emaratproject.retrofit.gsonDeserializer.CityListDeserializer;
 import com.emerat.emaratproject.retrofit.gsonDeserializer.CountryListDeserializer;
-import com.emerat.emaratproject.viewModel.NetworkViewModel;
 import com.google.gson.reflect.TypeToken;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ApplicationContainer {
@@ -31,11 +34,13 @@ public class ApplicationContainer {
 
     private CityRepository mCityRepository=CityRepository.getInstance(createRetrofitInterface(new City()));
 
+    private DataRepository mDataRepository = DataRepository.getInstance(mRetrofitInterface);
+
     private SignInViewModelFactory mSignInViewModelFactory=
             new SignInViewModelFactory(mUserRepository);
 
     private NetworkViewModelFactory mNetworkViewModelFactory=
-            new NetworkViewModelFactory(mCountryRepository,mCityRepository);
+            new NetworkViewModelFactory(mCountryRepository,mCityRepository, mDataRepository);
 
     private ProfileViewModelFactory mProfileViewModelFactory=
             new ProfileViewModelFactory(mUserRepository);
@@ -46,10 +51,6 @@ public class ApplicationContainer {
 
     public NetworkViewModelFactory getNetworkViewModelFactory() {
         return mNetworkViewModelFactory;
-    }
-
-    public ProfileViewModelFactory getProfileViewModelFactory(){
-        return mProfileViewModelFactory;
     }
 
     private <T>  RetrofitInterface  createRetrofitInterface(T t){
@@ -75,5 +76,27 @@ public class ApplicationContainer {
 
     public List<City> getCityList(){
         return mCityRepository.getCityList();
+    }
+
+    public List<DataItem> getProductList(){
+        return mDataRepository.getDataItems();
+    }
+
+    @NotNull
+    public List<String> getCountryNames() {
+        List<String> countryNames=new ArrayList<>();
+        for (Country country : getCountyList()) {
+            countryNames.add(country.getName());
+        }
+        return countryNames;
+    }
+
+    @NotNull
+    public  List<String> getCityNames() {
+        List<String> cityNames=new ArrayList<>();
+        for (City city :getCityList()) {
+            cityNames.add(city.getTitle());
+        }
+        return cityNames;
     }
 }

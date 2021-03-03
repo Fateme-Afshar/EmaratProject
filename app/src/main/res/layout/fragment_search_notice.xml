@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.emerat.emaratproject.viewModel.NetworkViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.emerat.emaratproject.view.fragment.SearchNoticeFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_country_city"
+            android:fontFamily="@font/yekan_bakh"
+            android:textColor="@color/light_green"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="64dp" />
+
+        <Spinner
+            android:id="@+id/sp_country"
+            style="@style/CustomSpinnerStyle"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"
+            />
+
+        <Spinner
+            android:id="@+id/sp_city"
+            style="@style/CustomSpinnerStyle"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="16dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:text="@string/next_step"
+            android:fontFamily="@font/yekan_bakh"
+            android:onClick="@{()->viewModel.requestServerReceiveProducts(fragment.countryId,fragment.cityId)}"
+            />
+    </LinearLayout>
+</layout>

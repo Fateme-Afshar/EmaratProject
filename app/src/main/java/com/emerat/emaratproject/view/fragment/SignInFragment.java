@@ -1,11 +1,6 @@
 package com.emerat.emaratproject.view.fragment;
 
 import android.os.Bundle;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,27 +8,28 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+
 import com.emerat.emaratproject.EmaratProjectApplication;
 import com.emerat.emaratproject.R;
-
 import com.emerat.emaratproject.databinding.FragmentSignInBinding;
 import com.emerat.emaratproject.di.ApplicationContainer;
-import com.emerat.emaratproject.model.City;
-import com.emerat.emaratproject.model.Country;
 import com.emerat.emaratproject.model.PostResponse;
 import com.emerat.emaratproject.sharePref.EmaratProjectSharePref;
 import com.emerat.emaratproject.utils.ProgramUtils;
+import com.emerat.emaratproject.utils.SpinnerUtils;
 import com.emerat.emaratproject.viewModel.NetworkViewModel;
 import com.emerat.emaratproject.viewModel.SignInViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SignInFragment extends Fragment{
     private FragmentSignInBinding mBinding;
     private SignInViewModel mViewModel;
     private NetworkViewModel mNetworkViewModel;
-
+    private ApplicationContainer mContainer;
     public SignInFragment() {
         // Required empty public constructor
     }
@@ -48,9 +44,9 @@ public class SignInFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ApplicationContainer container= ((EmaratProjectApplication) getActivity().getApplication()).getApplicationContainer();
-        mViewModel=container.getSignInViewModelFactory().create();
-        mNetworkViewModel=container.getNetworkViewModelFactory().create();
+        mContainer =((EmaratProjectApplication) getActivity().getApplication()).getApplicationContainer();
+        mViewModel = mContainer.getSignInViewModelFactory().create();
+        mNetworkViewModel = mContainer.getNetworkViewModelFactory().create();
 
         mNetworkViewModel.requestServerReceiveCounties();
 
@@ -94,26 +90,14 @@ public class SignInFragment extends Fragment{
     }
 
     private void setupCountrySpinner() {
-        List<String> countryNames=new ArrayList<>();
-        for (Country country :
-                new ApplicationContainer().getCountyList()) {
-            countryNames.add(country.getName());
-        }
 
-        ArrayAdapter<String> userArrayAdapter= new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, countryNames);
+        ArrayAdapter<String> userArrayAdapter= new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, mContainer.getCountryNames());
         mBinding.spCountry.setAdapter(userArrayAdapter);
 
         mBinding.spCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String name=adapterView.getItemAtPosition(position).toString();
-
-                String countyId="";
-                for (Country country :
-                        new ApplicationContainer().getCountyList()) {
-                    if (country.getName().equals(name))
-                        countyId=country.getId();
-                }
+                String countyId = SpinnerUtils.getUserSelectedCountryId(adapterView, position,mContainer.getCountyList());
                 mViewModel.setCountryCode(countyId);
                 mNetworkViewModel.requestServerReceiveCities(countyId);
             }
@@ -126,26 +110,14 @@ public class SignInFragment extends Fragment{
     }
 
     private void setupCitySpinner() {
-        List<String> cityNames=new ArrayList<>();
-        for (City city :
-                new ApplicationContainer().getCityList()) {
-            cityNames.add(city.getTitle());
-        }
 
-        ArrayAdapter<String> userArrayAdapter= new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, cityNames);
+        ArrayAdapter<String> userArrayAdapter= new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, mContainer.getCityNames());
         mBinding.spCity.setAdapter(userArrayAdapter);
 
         mBinding.spCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                String cityName=adapterView.getItemAtPosition(position).toString();
-
-                String cityId="";
-                for (City city :
-                        new ApplicationContainer().getCityList()) {
-                    if (city.getTitle().equals(cityName))
-                        cityId=city.getId();
-                }
+                String cityId = SpinnerUtils.getUserSelectedCityId(adapterView, position,mContainer.getCityList());
                 mViewModel.setCityId(cityId);
             }
 
@@ -155,5 +127,4 @@ public class SignInFragment extends Fragment{
             }
         });
     }
-
 }

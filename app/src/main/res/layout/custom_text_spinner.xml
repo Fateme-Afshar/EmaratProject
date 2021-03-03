@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textview.MaterialTextView
+    style="?attr/spinnerDropDownItemStyle"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/listPreferredItemHeight"
+    android:text="@string/user_email_hint"
+    android:ellipsize="marquee"
+    android:textAlignment="viewEnd"
+    android:gravity="end"
+    android:textColor="@color/red"
+    android:background="@color/white" />
