@@ -39,4 +39,8 @@
     <string name="edit_information">ویرایش مشخصات</string>
     <string name="no_internet_connection">No internet connection</string>
     <string name="connect_again">اتصال مجدد</string>
+    <string name="menu_home">خانه</string>
+    <string name="menu_add_notice">درج آگهی</string>
+    <string name="menu_chat">چت</string>
+    <string name="menu_account">پروفایل</string>
 </resources>

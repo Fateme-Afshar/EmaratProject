@@ -18,6 +18,9 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_alignParentBottom="true"/>
+        android:background="#beb2b2"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_bottom_nav"
+        />
 
 </RelativeLayout>
