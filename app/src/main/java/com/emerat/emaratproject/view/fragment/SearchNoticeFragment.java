@@ -61,22 +61,22 @@ public class SearchNoticeFragment extends Fragment {
 
         mNetworkViewModel = mContainer.getNetworkViewModelFactory().create();
 
-        mNetworkViewModel.requestServerReceiveCounties();
+        observeReceiveCountry();
+        observeReceiveCity();
+        observeResultSearchNotice();
+    }
 
-        mNetworkViewModel.getIsReceiveCountry().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                setupCountrySpinner();
-            }
-        });
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        mBinding= DataBindingUtil.
+                inflate(inflater,R.layout.fragment_search_notice,container,false);
+        mBinding.setFragment(this);
+        mBinding.setViewModel(mNetworkViewModel);
+      return mBinding.getRoot();
+    }
 
-        mNetworkViewModel.getIsReceiveCity().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                setupCitySpinner();
-            }
-        });
-
+    private void observeResultSearchNotice() {
         mNetworkViewModel.getIsReceiveData().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
@@ -92,14 +92,24 @@ public class SearchNoticeFragment extends Fragment {
         });
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        mBinding= DataBindingUtil.
-                inflate(inflater,R.layout.fragment_search_notice,container,false);
-        mBinding.setFragment(this);
-        mBinding.setViewModel(mNetworkViewModel);
-      return mBinding.getRoot();
+    private void observeReceiveCity() {
+        mNetworkViewModel.getIsReceiveCity().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                setupCitySpinner();
+            }
+        });
+    }
+
+    private void observeReceiveCountry() {
+        mNetworkViewModel.requestServerReceiveCounties();
+
+        mNetworkViewModel.getIsReceiveCountry().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                setupCountrySpinner();
+            }
+        });
     }
 
     private void setupCountrySpinner() {
@@ -153,6 +163,10 @@ public class SearchNoticeFragment extends Fragment {
 
     public void setCityId(String cityId) {
         mCityId = cityId;
+    }
+
+    public SearchNoticeFragmentCallback getCallback() {
+        return mCallback;
     }
 
     public interface SearchNoticeFragmentCallback {

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.emerat.emaratproject.view.fragment.SliderFragment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imv_bugle"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img_bugle"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp" />
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_gravity="center"
+            app:sliderAnimationDuration="2000"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="@color/red"
+            app:sliderIndicatorUnselectedColor="@color/light_gray"
+            app:sliderScrollTimeInSec="3" />
+
+        <View
+            android:layout_width="200dp"
+            android:layout_height="50dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="250dp"
+            android:layout_height="65dp"
+            android:layout_gravity="bottom|center"
+            android:text="@string/start"
+            android:textSize="25sp"
+            android:onClick="@{()->fragment.callback.onStartBtnClickListener()}"
+            />
+
+    </LinearLayout>
+</layout>
