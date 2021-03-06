@@ -18,7 +18,8 @@ import com.emerat.emaratproject.view.fragment.SignInFragment;
 import com.emerat.emaratproject.view.fragment.SpecialNoticeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements
+        AddNoticeFragment.AddNoticeFragmentCallback{
     private ActivityMainBinding mBinding;
 
     public static void start(Context context) {
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().
                 beginTransaction().
-                add(R.id.fragment_container,SpecialNoticeFragment.newInstance()).
+                add(R.id.fragment_container, SpecialNoticeFragment.newInstance()).
                 commit();
     }
 
@@ -69,4 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     commit();
     }
 
+    @Override
+    public void openMapFragment(double lat, double lon) {
+        MapActivity.start(this);
+    }
 }

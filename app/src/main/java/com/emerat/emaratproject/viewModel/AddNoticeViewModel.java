@@ -1,8 +1,6 @@
 package com.emerat.emaratproject.viewModel;
 
-import android.content.Intent;
 import android.text.Editable;
-import android.text.format.DateFormat;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,9 +8,6 @@ import androidx.lifecycle.ViewModel;
 
 import com.emerat.emaratproject.model.data.Notice;
 import com.emerat.emaratproject.repository.NoticeRepository;
-import com.emerat.emaratproject.view.fragment.DatePickerFragment;
-
-import java.util.Date;
 
 public class AddNoticeViewModel extends ViewModel {
     private NoticeRepository mNoticeRepository;

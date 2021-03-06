@@ -29,4 +29,13 @@
         <item name="android:background">@drawable/spinner_bg</item>
     </style>
 
+    <style name="Theme.EmaratProject.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.EmaratProject.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.EmaratProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
