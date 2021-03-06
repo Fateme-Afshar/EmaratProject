@@ -6,12 +6,12 @@ import com.google.gson.annotations.SerializedName;
 public class ResponseProduct{
 
 	@SerializedName("data")
-	private List<DataItem> data;
+	private List<Notice> data;
 
 	@SerializedName("end")
 	private int end;
 
-	public List<DataItem> getData(){
+	public List<Notice> getNoticeList(){
 		return data;
 	}
 

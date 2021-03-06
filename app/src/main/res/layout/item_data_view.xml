@@ -4,8 +4,8 @@
 
     <data>
         <variable
-            name="dataItem"
-            type="com.emerat.emaratproject.model.data.DataItem" />
+            name="notice"
+            type="com.emerat.emaratproject.model.data.Notice" />
     </data>
 
     <RelativeLayout
@@ -31,7 +31,7 @@
             android:layout_alignParentLeft="true"
             android:textAlignment="center"
             tools:text="@string/four_star_hotel"
-            android:text="@{dataItem.title}"
+            android:text="@{notice.title}"
             android:gravity="center_horizontal"
             />
 

@@ -43,4 +43,10 @@
     <string name="menu_add_notice">درج آگهی</string>
     <string name="menu_chat">چت</string>
     <string name="menu_account">پروفایل</string>
+    <string name="address">آدرس</string>
+    <string name="ex_date">تاریخ انقضا آگهی</string>
+    <string name="telephone_hint">تلفن</string>
+    <string name="abount_hint">توضیحات</string>
+    <string name="country_hint">کشور</string>
+    <string name="offer">تخفیف</string>
 </resources>

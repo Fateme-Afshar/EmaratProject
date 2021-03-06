@@ -5,24 +5,24 @@ import androidx.lifecycle.ViewModel;
 
 import com.emerat.emaratproject.repository.CityRepository;
 import com.emerat.emaratproject.repository.CountryRepository;
-import com.emerat.emaratproject.repository.DataRepository;
+import com.emerat.emaratproject.repository.NoticeRepository;
 
 public class NetworkViewModel extends ViewModel {
     private CountryRepository mCountryRepository;
     private CityRepository mCityRepository;
-    private DataRepository mDataRepository;
+    private NoticeRepository mNoticeRepository;
     private LiveData<Boolean> mIsReceiveCountry;
     private LiveData<Boolean> mIsReceiveCity;
     private LiveData<Boolean> mIsReceiveProducts;
 
-    public NetworkViewModel(CountryRepository countryRepository, CityRepository cityRepository, DataRepository dataRepository) {
+    public NetworkViewModel(CountryRepository countryRepository, CityRepository cityRepository, NoticeRepository noticeRepository) {
         mCountryRepository = countryRepository;
         mCityRepository=cityRepository;
-        mDataRepository = dataRepository;
+        mNoticeRepository = noticeRepository;
 
         mIsReceiveCountry=countryRepository.getIsReceive();
         mIsReceiveCity=cityRepository.getIsReceiveCity();
-        mIsReceiveProducts= dataRepository.getIsReceiveProduct();
+        mIsReceiveProducts= noticeRepository.getIsReceiveProduct();
     }
 
     public void requestServerReceiveCounties(){
@@ -34,7 +34,7 @@ public class NetworkViewModel extends ViewModel {
     }
 
     public void requestServerReceiveProducts(String countryId,String cityId){
-        mDataRepository.requestServerReceiveProducts(countryId,cityId);
+        mNoticeRepository.requestServerReceiveProducts(countryId,cityId);
     }
 
     public LiveData<Boolean> getIsReceiveCountry() {

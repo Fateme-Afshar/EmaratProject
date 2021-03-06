@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.emerat.emaratproject.R;
 import com.emerat.emaratproject.databinding.ItemDataViewBinding;
-import com.emerat.emaratproject.model.data.DataItem;
+import com.emerat.emaratproject.model.data.Notice;
 
 import java.util.List;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.Holder> {
     private Context mContext;
-    private List<DataItem> mDataItemList;
+    private List<Notice> mNoticeList;
 
-    public DataAdapter(Context context, List<DataItem> dataItemList) {
+    public DataAdapter(Context context, List<Notice> noticeList) {
         mContext = context;
-        mDataItemList = dataItemList;
+        mNoticeList = noticeList;
     }
 
     @NonNull
@@ -33,12 +33,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
-        holder.binding(mDataItemList.get(position));
+        holder.binding(mNoticeList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mDataItemList.size();
+        return mNoticeList.size();
     }
 
     class Holder extends RecyclerView.ViewHolder{
@@ -49,8 +49,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.Holder> {
             mBinding=binding;
         }
 
-        public void binding(DataItem dataItem){
-                mBinding.setDataItem(dataItem);
+        public void binding(Notice notice){
+                mBinding.setNotice(notice);
         }
     }
 }

@@ -1,16 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".view.fragment.AddNoticeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <data>
 
-</FrameLayout>
+    </data>
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:gravity="bottom|center">
+
+           <com.google.android.material.textview.MaterialTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/insert_notice_information"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               android:textColor="@color/light_green"
+               android:layout_marginTop="24dp"
+               android:layout_marginBottom="32dp" />
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="16dp">
+
+               <androidx.appcompat.widget.AppCompatEditText
+                   android:id="@+id/notice_title"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="@string/specific_notice_title"
+                   android:textColor="@color/black"
+                   android:textSize="16sp" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="16dp">
+
+               <androidx.appcompat.widget.AppCompatEditText
+                   android:id="@+id/notice_about"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="@string/abount_hint"
+                   android:textColor="@color/black"
+                   android:textSize="16sp" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.button.MaterialButton
+               android:id="@+id/take_photo"
+               style="@style/Widget.MaterialComponents.Button.OutlinedButton.RedBorder"
+               android:layout_width="300dp"
+               android:layout_height="75dp"
+               android:layout_marginBottom="16dp"
+               app:icon="@drawable/ic_camera"
+               android:text="@string/take_photo"
+               android:textColor="@color/red"
+               app:iconGravity="textStart" />
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="16dp">
+
+               <androidx.appcompat.widget.AppCompatEditText
+                   android:id="@+id/notice_address"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="@string/address"
+                   android:textColor="@color/black"
+                   android:textSize="16sp" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="16dp">
+
+               <androidx.appcompat.widget.AppCompatEditText
+                   android:id="@+id/notice_telephone"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="@string/telephone_hint"
+                   android:textColor="@color/black"
+                   android:textSize="16sp" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+           <com.google.android.material.textfield.TextInputLayout
+               style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="16dp">
+
+               <androidx.appcompat.widget.AppCompatEditText
+                   android:id="@+id/notice_offer"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="@string/offer"
+                   android:textColor="@color/black"
+                   android:textSize="16sp" />
+           </com.google.android.material.textfield.TextInputLayout>
+
+   <!--        <com.google.android.material.button.MaterialButton
+               style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+               android:layout_width="300dp"
+               android:layout_height="75dp"
+               app:icon="@drawable/ic_location"
+               android:text="@string/select_location"
+               android:textColor="@color/light_gray"
+               app:iconTint="@color/red"
+               android:gravity="start|center"
+               android:layout_marginBottom="16dp" />-->
+
+           <Spinner
+               style="@style/CustomSpinnerStyle"
+               android:id="@+id/sp_country"
+               android:layout_width="300dp"
+               android:layout_height="60dp"
+               android:layout_marginBottom="16dp" />
+
+           <Spinner
+               android:id="@+id/sp_city"
+               style="@style/CustomSpinnerStyle"
+               android:layout_width="300dp"
+               android:layout_height="60dp"
+               android:layout_marginBottom="16dp"/>
+
+           <com.google.android.material.button.MaterialButton
+               android:id="@+id/btn_ex_date"
+               style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+               android:layout_width="300dp"
+               android:layout_height="75dp"
+               app:icon="@drawable/ic_date_picker"
+               android:text="@string/ex_date"
+               android:textColor="@color/light_gray"
+               app:iconTint="@color/red"
+               android:gravity="start|center"
+               android:layout_marginBottom="16dp" />
+
+           <com.google.android.material.button.MaterialButton
+               style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+               android:layout_width="300dp"
+               android:layout_height="75dp"
+               app:icon="@drawable/ic_location"
+               android:text="@string/select_location"
+               android:textColor="@color/light_gray"
+               app:iconTint="@color/red"
+               android:gravity="start|center"
+               android:layout_marginBottom="16dp" />
+
+           <com.google.android.material.button.MaterialButton
+               android:id="@+id/btn_location"
+               style="@style/Widget.MaterialComponents.Button.OutlinedButton.PinkBorder"
+               android:layout_width="150dp"
+               android:layout_height="65dp"
+               android:textColor="#fbb2b2"
+               android:text="@string/category"
+               android:layout_marginBottom="72dp" />
+
+           <com.google.android.material.button.MaterialButton
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="bottom|center"
+               android:layout_marginBottom="16dp"
+               android:text="@string/submit_notice" />
+
+       </LinearLayout>
+   </ScrollView>
+</layout>

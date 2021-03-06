@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.emerat.emaratproject.model.data.DataItem;
+import com.emerat.emaratproject.model.data.Notice;
 import com.emerat.emaratproject.model.data.ResponseProduct;
 import com.emerat.emaratproject.retrofit.RetrofitInterface;
 import com.emerat.emaratproject.utils.NetworkUtils;
@@ -18,21 +18,21 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class DataRepository {
-    private static DataRepository sInstance;
+public class NoticeRepository {
+    private static NoticeRepository sInstance;
     private RetrofitInterface mRetrofitInterface;
 
-    private List<DataItem> mDataItems =new ArrayList<>();
+    private List<Notice> mNotices =new ArrayList<>();
 
     private MutableLiveData<Boolean> mIsReceiveProduct=new MutableLiveData<>();
 
-    private DataRepository(RetrofitInterface retrofitInterface) {
+    private NoticeRepository(RetrofitInterface retrofitInterface) {
         mRetrofitInterface = retrofitInterface;
     }
 
-    public static DataRepository getInstance(RetrofitInterface retrofitInterface) {
+    public static NoticeRepository getInstance(RetrofitInterface retrofitInterface) {
         if (sInstance == null)
-            sInstance = new DataRepository(retrofitInterface);
+            sInstance = new NoticeRepository(retrofitInterface);
         return sInstance;
     }
 
@@ -44,16 +44,16 @@ public class DataRepository {
 
         observable.subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
-                subscribe(this::setDataItems, t -> Log.e(ProgramUtils.TAG,t.getMessage()));
+                subscribe(this::setNotices, t -> Log.e(ProgramUtils.TAG,t.getMessage()));
     }
 
-    public void setDataItems(ResponseProduct responseProduct){
-        mDataItems.addAll(responseProduct.getData());
+    public void setNotices(ResponseProduct responseProduct){
+        mNotices.addAll(responseProduct.getNoticeList());
         mIsReceiveProduct.setValue(true);
     }
 
-    public List<DataItem> getDataItems() {
-        return mDataItems;
+    public List<Notice> getNotices() {
+        return mNotices;
     }
 
     public LiveData<Boolean> getIsReceiveProduct() {
